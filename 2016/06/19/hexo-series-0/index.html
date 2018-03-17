@@ -1,0 +1,674 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="8uyFmQ7hRC" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, mysql, php, java, maxfang" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Max的Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x4ECA;&amp;#x5E74;&amp;#x524D;&amp;#x4E00;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x5C06;&amp;#x535A;&amp;#x5BA2;&amp;#x4ECE; jeklly &amp;#x8F6C;&amp;#x5230; hexo &amp;#xFF0C;&amp;#x611F;&amp;#x89C9;&amp;#x8FD8;&amp;#x662F;&amp;#x975E;&amp;#x5E38;&amp;#x597D;&amp;#x7528;&amp;#x7684;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 使用札记 - 常用命令">
+<meta property="og:url" content="http://maxfang.me/2016/06/19/hexo-series-0/index.html">
+<meta property="og:site_name" content="Max的Blog">
+<meta property="og:description" content="&amp;#x4ECA;&amp;#x5E74;&amp;#x524D;&amp;#x4E00;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x5C06;&amp;#x535A;&amp;#x5BA2;&amp;#x4ECE; jeklly &amp;#x8F6C;&amp;#x5230; hexo &amp;#xFF0C;&amp;#x611F;&amp;#x89C9;&amp;#x8FD8;&amp;#x662F;&amp;#x975E;&amp;#x5E38;&amp;#x597D;&amp;#x7528;&amp;#x7684;&amp;#">
+<meta property="og:updated_time" content="2016-06-19T15:52:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo 使用札记 - 常用命令">
+<meta name="twitter:description" content="&amp;#x4ECA;&amp;#x5E74;&amp;#x524D;&amp;#x4E00;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x5C06;&amp;#x535A;&amp;#x5BA2;&amp;#x4ECE; jeklly &amp;#x8F6C;&amp;#x5230; hexo &amp;#xFF0C;&amp;#x611F;&amp;#x89C9;&amp;#x8FD8;&amp;#x662F;&amp;#x975E;&amp;#x5E38;&amp;#x597D;&amp;#x7528;&amp;#x7684;&amp;#">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6296429059899393000,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://maxfang.me/2016/06/19/hexo-series-0/"/>
+
+  <title> hexo 使用札记 - 常用命令 | Max的Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?67809b4ebdab46caa23b4831eaa0da9a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Max的Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                hexo 使用札记 - 常用命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-06-19T01:15:11+08:00" content="2016-06-19">
+              2016-06-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x4ECA;&#x5E74;&#x524D;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C06;&#x535A;&#x5BA2;&#x4ECE; jeklly &#x8F6C;&#x5230; hexo &#xFF0C;&#x611F;&#x89C9;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x597D;&#x7528;&#x7684;&#xFF0C;hexo &#x7684;&#x5E38;&#x7528;&#x547D;&#x4EE4;&#x4E0D;&#x591A;&#xFF0C;&#x672C;&#x6587;&#x5C31;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x4F7F;&#x7528; hexo &#x7684;&#x5E38;&#x7528;&#x57FA;&#x672C;&#x547D;&#x4EE4;&#x3002;</p>
+<h2 id="hexo-cl"><a href="#hexo-cl" class="headerlink" title="hexo cl"></a>hexo cl</h2><ul>
+<li>&#x5168;&#x540D;&#xFF1A;hexo clean</li>
+<li>&#x6E05;&#x9664;&#x7F13;&#x5B58;&#x6587;&#x4EF6;<strong>db.json</strong>&#x548C;&#x5DF2;&#x751F;&#x6210;&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6; <strong>public</strong>&#x3002;</li>
+</ul>
+<h2 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h2><ul>
+<li>&#x5168;&#x540D;: hexo generate</li>
+<li>&#x751F;&#x6210;&#x7F51;&#x7AD9;&#x9759;&#x6001;&#x6587;&#x4EF6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4FDD;&#x5B58;&#x5728;<strong>public</strong>&#x6587;&#x4EF6;&#x5939;&#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x7531;&#x4E8E;hexo&#x6E90;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#x6027;&#x4E0D;&#x5F3A;&#xFF0C;&#x4F7F;&#x7528; <strong>hexo g</strong> &#x53EF;&#x4EE5;&#x5C06;hexo&#x6E90;&#x6587;&#x4EF6;&#x751F;&#x6210;&#x9759;&#x6001;&#x6587;&#x4EF6;&#xFF0C;&#x4FBF;&#x4E8E;&#x8C03;&#x8BD5;&#xFF0C;&#x751F;&#x6210;&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x90E8;&#x7F72;&#x7F51;&#x7AD9;&#x3002; </p>
+</blockquote>
+<h2 id="hero-s"><a href="#hero-s" class="headerlink" title="hero s"></a>hero s</h2><ul>
+<li>&#x5168;&#x540D;&#xFF1A;hexo server</li>
+<li>&#x542F;&#x52A8;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8BBF;&#x95EE;&#x672C;&#x5730;hexo&#x9879;&#x76EE;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x662F; <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> &#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5728;&#x672C;&#x5730;&#x9884;&#x89C8;&#x535A;&#x5BA2;&#x6837;&#x5F0F;&#x548C;&#x5185;&#x5BB9;&#x3002;</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>&#x4FEE;&#x6539;&#x6587;&#x7AE0;&#x5185;&#x5BB9;&#x6216;&#x662F;&#x4FEE;&#x6539;&#x6837;&#x5F0F;&#x4EE3;&#x7801;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x8FD0;&#x884C; <strong>hexo s</strong> &#x91CD;&#x542F;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x6587;&#x4EF6;&#x540E;&#x5237;&#x65B0;&#x9875;&#x9762;&#x5373;&#x53EF;&#x770B;&#x5230;&#x6548;&#x679C;&#x3002;<br>&#x82E5;&#x662F;&#x4FEE;&#x6539;&#x4E86;hexo&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <strong>_config.yml</strong> &#xFF0C;&#x5219;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x8FD0;&#x884C; <strong>hexo s</strong> &#x547D;&#x4EE4;&#x91CD;&#x542F;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#x3002; </p>
+</blockquote>
+<h2 id="hero-d"><a href="#hero-d" class="headerlink" title="hero d"></a>hero d</h2><ul>
+<li>&#x5168;&#x540D;&#xFF1A;hexo deploy</li>
+<li>&#x751F;&#x6210;&#x7F51;&#x7AD9;&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x90E8;&#x7F72;&#x5230; <strong>_config.yml</strong> &#x6587;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;&#x7684;&#x4ED3;&#x5E93;&#x4E2D;&#x3002;</li>
+</ul>
+<h2 id="hexo-n-page-xxx"><a href="#hexo-n-page-xxx" class="headerlink" title="hexo n page xxx"></a>hexo n page xxx</h2><ul>
+<li>&#x5168;&#x540D;&#xFF1A;hexo new page xxx</li>
+<li>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <strong>xxx</strong> &#x7684;&#x9875;&#x9762;&#xFF0C;&#x6587;&#x4EF6;&#x5730;&#x5740;&#x4E3A; <strong>source/xxx/index.md</strong>  &#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x4F7F;&#x7528;&#x8BE5;&#x547D;&#x4EE4;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x8FDB;&#x884C;&#x91CD;&#x547D;&#x540D;&#xFF0C;&#x540C;&#x65F6;&#x751F;&#x6210;&#x7684;&#x9875;&#x9762;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x6587;&#x7AE0;&#x5217;&#x8868;&#x548C;&#x5F52;&#x6863;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4E5F;&#x4E0D;&#x652F;&#x6301;&#x8BBE;&#x7F6E;&#x5206;&#x7C7B;&#x548C;&#x6807;&#x7B7E;&#x3002;<br>&#x82E5;&#x9700;&#x8981;&#x5220;&#x9664;&#x8BE5;&#x9875;&#x9762;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5220;&#x9664; <strong>source/xxx</strong> &#x76EE;&#x5F55;&#x5373;&#x53EF;&#x3002;</p>
+</blockquote>
+<h2 id="hexo-n-xxx"><a href="#hexo-n-xxx" class="headerlink" title="hexo n xxx"></a>hexo n xxx</h2><ul>
+<li>&#x5168;&#x540D;&#xFF1A;hexo new xxx</li>
+<li>&#x65B0;&#x5EFA;&#x4E00;&#x7BC7;&#x540D;&#x4E3A; <strong>xxx</strong> &#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x6587;&#x4EF6;&#x5730;&#x5740;&#x4E3A; <strong>source/_posts/xxx.md</strong> &#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x4F7F;&#x7528;&#x8BE5;&#x547D;&#x4EE4;&#x751F;&#x6210;&#x7684;&#x6587;&#x7AE0;&#x540D;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x624B;&#x52A8;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x3002;<br>&#x5982;&#x679C;&#x6587;&#x7AE0;&#x540D;&#x4E2D;&#x6709;&#x7A7A;&#x683C;&#xFF0C;&#x5219;&#x6587;&#x7AE0;&#x540D;&#x9700;&#x8981;&#x4F7F;&#x7528; <strong>&#x201C;&#x201D;</strong> &#xFF0C;&#x4F8B;&#x5982; hexo new &#x201C;hello world&#x201D;&#x3002;<br>&#x82E5;&#x9700;&#x8981;&#x5220;&#x9664;&#x67D0;&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5220;&#x9664; <strong>source/_posts/xxx.md</strong> &#x6587;&#x4EF6;&#x5373;&#x53EF;&#x3002;</p>
+</blockquote>
+<h2 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</h2><ul>
+<li><a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external">hexo&#x4E2D;&#x6587;&#x6587;&#x6863;</a></li>
+</ul>
+<hr>
+<p>Happy Coding.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/18/mysql-master-replication-series-0/" rel="next" title="MySQL 主从复制 -Could not initialize master info structure">
+                <i class="fa fa-chevron-left"></i> MySQL 主从复制 -Could not initialize master info structure
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/21/mac_chrome_hot_key/" rel="prev" title="Mac 下 Chrome 的优雅操作">
+                Mac 下 Chrome 的优雅操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/icon.jpg"
+               alt="Max Fang" />
+          <p class="site-author-name" itemprop="name">Max Fang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/FX-Max" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/CSUMax" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-cl"><span class="nav-number">1.</span> <span class="nav-text">hexo cl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-g"><span class="nav-number">2.</span> <span class="nav-text">hexo g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hero-s"><span class="nav-number">3.</span> <span class="nav-text">hero s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hero-d"><span class="nav-number">4.</span> <span class="nav-text">hero d</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-n-page-xxx"><span class="nav-number">5.</span> <span class="nav-text">hexo n page xxx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-n-xxx"><span class="nav-number">6.</span> <span class="nav-text">hexo n xxx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Max Fang</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
