@@ -1,15 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
 
 
 
@@ -21,58 +31,86 @@
 
 
 
-  <meta name="baidu-site-verification" content="8uyFmQ7hRC" />
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
   
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="php,source,源码," />
-
-
+  <meta name="description" content="自增和自减基础学过编程语言的同学应该都可以随口说出 ++a 和 a++ 的区别，具体的区别如下：    Example Name Effect     ++$a Pre-increment Increments $a by one, then returns $a.   $a++ Post-increment Returns $a, then increments $a by one.   –$a">
+<meta name="keywords" content="php,source,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从源码角度看 php 自增和自减">
+<meta property="og:url" content="http://maxfang.me/2016/05/06/php-incrementing-decrementing-analysis/index.html">
+<meta property="og:site_name" content="Max的Blog">
+<meta property="og:description" content="自增和自减基础学过编程语言的同学应该都可以随口说出 ++a 和 a++ 的区别，具体的区别如下：    Example Name Effect     ++$a Pre-increment Increments $a by one, then returns $a.   $a++ Post-increment Returns $a, then increments $a by one.   –$a">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2016-06-19T15:06:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从源码角度看 php 自增和自减">
+<meta name="twitter:description" content="自增和自减基础学过编程语言的同学应该都可以随口说出 ++a 和 a++ 的区别，具体的区别如下：    Example Name Effect     ++$a Pre-increment Increments $a by one, then returns $a.   $a++ Post-increment Returns $a, then increments $a by one.   –$a">
 
 
 
@@ -81,51 +119,21 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="canonical" href="http://maxfang.me/2016/05/06/php-incrementing-decrementing-analysis/"/>
 
 
 
-
-
-
-<meta name="description" content="&amp;#x81EA;&amp;#x589E;&amp;#x548C;&amp;#x81EA;&amp;#x51CF;&amp;#x57FA;&amp;#x7840;&amp;#x5B66;&amp;#x8FC7;&amp;#x7F16;&amp;#x7A0B;&amp;#x8BED;&amp;#x8A00;&amp;#x7684;&amp;#x540C;&amp;#x5B66;&amp;#x5E94;&amp;#x8BE5;&amp;#x90FD;&amp;#x53EF;&amp;#x4EE5;&amp;#x968F;&amp;#x53E3;&amp;#x8BF4;&amp;#x51FA;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="从源码角度看 php 自增和自减">
-<meta property="og:url" content="http://maxfang.me/2016/05/06/php-incrementing-decrementing-analysis/index.html">
-<meta property="og:site_name" content="Max的Blog">
-<meta property="og:description" content="&amp;#x81EA;&amp;#x589E;&amp;#x548C;&amp;#x81EA;&amp;#x51CF;&amp;#x57FA;&amp;#x7840;&amp;#x5B66;&amp;#x8FC7;&amp;#x7F16;&amp;#x7A0B;&amp;#x8BED;&amp;#x8A00;&amp;#x7684;&amp;#x540C;&amp;#x5B66;&amp;#x5E94;&amp;#x8BE5;&amp;#x90FD;&amp;#x53EF;&amp;#x4EE5;&amp;#x968F;&amp;#x53E3;&amp;#x8BF4;&amp;#x51FA;">
-<meta property="og:updated_time" content="2016-06-19T15:06:06.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从源码角度看 php 自增和自减">
-<meta name="twitter:description" content="&amp;#x81EA;&amp;#x589E;&amp;#x548C;&amp;#x81EA;&amp;#x51CF;&amp;#x57FA;&amp;#x7840;&amp;#x5B66;&amp;#x8FC7;&amp;#x7F16;&amp;#x7A0B;&amp;#x8BED;&amp;#x8A00;&amp;#x7684;&amp;#x540C;&amp;#x5B66;&amp;#x5E94;&amp;#x8BE5;&amp;#x90FD;&amp;#x53EF;&amp;#x4EE5;&amp;#x968F;&amp;#x53E3;&amp;#x8BF4;&amp;#x51FA;">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 6296429059899393000,
-      author: 'Author'
-    }
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
   };
 </script>
 
-
-
-
-  <link rel="canonical" href="http://maxfang.me/2016/05/06/php-incrementing-decrementing-analysis/"/>
-
-  <title> 从源码角度看 php 自增和自减 | Max的Blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
+  <title>从源码角度看 php 自增和自减 | Max的Blog</title>
   
+
+
+
 
 
 
@@ -133,7 +141,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?67809b4ebdab46caa23b4831eaa0da9a";
+      hm.src = "https://hm.baidu.com/hm.js?67809b4ebdab46caa23b4831eaa0da9a";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -142,38 +150,71 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"> 
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Max的Blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Max的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <p class="site-subtitle"></p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -183,54 +224,22 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
       
 
       
@@ -238,14 +247,28 @@
   
 
   
+
+  
 </nav>
+
+
+  
+
+
 
  </div>
     </header>
 
+    
+
+
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -253,57 +276,72 @@
     
 
   
-  
 
   
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://maxfang.me/2016/05/06/php-incrementing-decrementing-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Max的Blog">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                从源码角度看 php 自增和自减
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">从源码角度看 php 自增和自减</h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-06T20:18:14+08:00" content="2016-05-06">
-              2016-05-06
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-06T20:18:14+08:00">2016-05-06</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
 
                 
                 
-
               
             </span>
           
@@ -313,23 +351,28 @@
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <h3 id="&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;&#x57FA;&#x7840;"><a href="#&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;&#x57FA;&#x7840;" class="headerlink" title="&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;&#x57FA;&#x7840;"></a>&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;&#x57FA;&#x7840;</h3><p>&#x5B66;&#x8FC7;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7684;&#x540C;&#x5B66;&#x5E94;&#x8BE5;&#x90FD;&#x53EF;&#x4EE5;&#x968F;&#x53E3;&#x8BF4;&#x51FA; ++a &#x548C; a++ &#x7684;&#x533A;&#x522B;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x533A;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p>
+        <h3 id="自增和自减基础"><a href="# 自增和自减基础" class="headerlink" title="自增和自减基础"></a>自增和自减基础 </h3><p> 学过编程语言的同学应该都可以随口说出 ++a 和 a++ 的区别，具体的区别如下：</p>
 <table>
 <thead>
 <tr>
@@ -350,80 +393,83 @@
 <td style="text-align:right">Returns $a, then increments $a by one.</td>
 </tr>
 <tr>
-<td>&#x2013;<code>$</code>a</td>
+<td>–<code>$</code>a</td>
 <td style="text-align:center">Pre-decrement</td>
 <td style="text-align:right">Decrements $a by one, then returns $a.</td>
 </tr>
 <tr>
-<td><code>$</code>a&#x2013;</td>
+<td><code>$</code>a–</td>
 <td style="text-align:center">Post-decrement</td>
 <td style="text-align:right">Returns $a, then decrements $a by one.</td>
 </tr>
 </tbody>
 </table>
-<p>++a &#x8868;&#x793A;&#x53D6; a &#x7684;&#x5730;&#x5740;&#xFF0C;&#x589E;&#x52A0;&#x5185;&#x5B58;&#x4E2D; a &#x7684;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x503C;&#x653E;&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;<br>a++ &#x8868;&#x793A;&#x53D6; a &#x7684;&#x5730;&#x5740;&#xFF0C;&#x628A; a &#x7684;&#x503C;&#x88C5;&#x5165;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x589E;&#x52A0;&#x5185;&#x5B58;&#x4E2D; a &#x7684;&#x503C;&#x3002;</p>
+<p>++a 表示取 a 的地址，增加内存中 a 的值，然后把值放在寄存器中。<br>a++ 表示取 a 的地址，把 a 的值装入寄存器中，然后增加内存中 a 的值。</p>
 <a id="more"></a>
-<h3 id="php-&#x4E2D;&#x7684;&#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;"><a href="#php-&#x4E2D;&#x7684;&#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;" class="headerlink" title="php &#x4E2D;&#x7684;&#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;"></a>php &#x4E2D;&#x7684;&#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;</h3><ul>
-<li>&#x5B98;&#x65B9;&#x6587;&#x6863;:<br><a href="http://php.net/manual/zh/language.operators.increment.php" target="_blank" rel="external">http://php.net/manual/zh/language.operators.increment.php</a></li>
+<h3 id="php- 中的递增和递减"><a href="#php- 中的递增和递减" class="headerlink" title="php 中的递增和递减"></a>php 中的递增和递减</h3><ul>
+<li>官方文档:<br><a href="http://php.net/manual/zh/language.operators.increment.php" target="_blank" rel="noopener">http://php.net/manual/zh/language.operators.increment.php</a></li>
 </ul>
-<p>&#x5728;php&#x4E2D;&#xFF0C;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;&#x6CA1;&#x4EC0;&#x4E48;&#x7279;&#x522B;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;&#x3002;</p>
+<p>在 php 中，通常情况下的递增和递减没什么特别，下面我们看一些特殊的递增和递减。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$a = NULL;	$a++;	//int 1                                  </span><br><span class="line">$a = NULL;	$a--;	//null                            		        </span><br><span class="line">$a = true;	$a++;	//true                            	</span><br><span class="line">$a = true;	$a--;	//true                            	</span><br><span class="line">$a = false;	$a++;	//false                            		</span><br><span class="line">$a = false;	$a--;	//false</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>&#x4ECE;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;php&#x4E2D;&#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;&#x8FD0;&#x7B97;&#x7B26;&#x4E0D;&#x5F71;&#x54CD;&#x5E03;&#x5C14;&#x503C;&#xFF1B;&#x9012;&#x51CF;NULL&#x503C;&#x6CA1;&#x6709;&#x6548;&#x679C;&#xFF0C;&#x4F46;&#x662F;&#x9012;&#x589E;NULL&#x503C;&#x7684;&#x7ED3;&#x679C;&#x4E3A;1&#x3002;</p>
+<p>从上面可以看出，php 中递增和递减运算符不影响布尔值；递减 NULL 值没有效果，但是递增 NULL 值的结果为 1。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$a = &apos;C&apos;;	$a++;	//string D                                </span><br><span class="line">$a = &apos;C&apos;;	$a--;	//string C                                </span><br><span class="line">$a = &apos;C2&apos;;	$a++;	//string C3                               </span><br><span class="line">$a = &apos;C2&apos;;	$a--;	//string C2                               </span><br><span class="line">$a = &apos;2C&apos;;	$a++;	//string 2D                               </span><br><span class="line">$a = &apos;2C&apos;;	$a--;	//string 2C</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>&#x4ECE;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5728;php&#x4E2D;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x652F;&#x6301;&#x9012;&#x589E;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x652F;&#x6301;&#x9012;&#x51CF;&#x3002;</p>
+<p>从上面可以看出，在 php 中，字符串支持递增，但是不支持递减。</p>
 </blockquote>
-<p>&#x518D;&#x770B;&#x4E00;&#x4E0B;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<p>再看一下下面的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$a = &apos;Z&apos;;	$a++;	//string AA                               </span><br><span class="line">$a = &apos;C9&apos;;	$a++;	//string D0</span><br></pre></td></tr></table></figure>
-<p>&#x2018;A&#x2019;&#x6267;&#x884C;&#x9012;&#x589E;&#xFF0C;&#x7ED3;&#x679C;&#x4E3A;&#x2019;B&#x2019;&#xFF1B;&#x2018;Z&#x2019;&#x6267;&#x884C;&#x9012;&#x589E;&#xFF0C;&#x7ED3;&#x679C;&#x4E3A;&#x2019;AA&#x2018;,&#x2019;C9&#x2019;&#x9012;&#x589E;&#xFF0C;&#x7ED3;&#x679C;&#x4E3A;&#x2019;D0&#x2019;&#x3002;&#x8FD9;&#x548C;Perl&#x76F8;&#x4F3C;&#x3002;</p>
-<h3 id="php&#x6E90;&#x7801;&#x5206;&#x6790;-a-&#x4E0E;-a"><a href="#php&#x6E90;&#x7801;&#x5206;&#x6790;-a-&#x4E0E;-a" class="headerlink" title="php&#x6E90;&#x7801;&#x5206;&#x6790;:$a++&#x4E0E;++$a"></a>php&#x6E90;&#x7801;&#x5206;&#x6790;:<code>$</code>a++&#x4E0E;++<code>$</code>a</h3><p>&#x9996;&#x5148;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#xFF0C;&#x6B64;&#x5904;&#x7684;&#x5206;&#x6790;&#x57FA;&#x4E8E; php5.6 &#x7684;&#x6E90;&#x7801;&#x5206;&#x6790;&#x3002;</p>
-<p>&#x5BF9;&#x4E8E;&#x524D;&#x7F00;&#x81EA;&#x589E;(++$a)&#xFF0C;&#x5305;&#x542B;&#x7684;opcode&#x4E3A;PRE_INC&#xFF0C;&#x5176;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x7684;&#x662F;Zend/zend_vm_execute.h&#x6587;&#x4EF6;&#x4E2D;&#x7684;ZEND_PRE_INC_SPEC_CV_HANDLER&#x51FD;&#x6570;&#xFF0C;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">static int ZEND_FASTCALL  ZEND_PRE_INC_SPEC_CV_HANDLER(ZEND_OPCODE_HANDLER_ARGS)</span><br><span class="line">{</span><br><span class="line">    USE_OPLINE</span><br><span class="line">    zval **var_ptr;</span><br><span class="line">    </span><br><span class="line">    SAVE_OPLINE();</span><br><span class="line">    var_ptr = _get_zval_ptr_ptr_cv_BP_VAR_RW(execute_data, opline-&gt;op1.var TSRMLS_CC);</span><br><span class="line">    </span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(var_ptr == NULL)) {</span><br><span class="line">        zend_error_noreturn(E_ERROR, &quot;Cannot increment/decrement overloaded objects nor string offsets&quot;);</span><br><span class="line">    }</span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(*var_ptr == &amp;EG(error_zval))) {</span><br><span class="line">        if (RETURN_VALUE_USED(opline)) {</span><br><span class="line">            PZVAL_LOCK(&amp;EG(uninitialized_zval));</span><br><span class="line">            EX_T(opline-&gt;result.var).var.ptr = &amp;EG(uninitialized_zval);</span><br><span class="line">        }</span><br><span class="line">    </span><br><span class="line">        CHECK_EXCEPTION();</span><br><span class="line">        ZEND_VM_NEXT_OPCODE();</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    SEPARATE_ZVAL_IF_NOT_REF(var_ptr);</span><br><span class="line">    </span><br><span class="line">    if (UNEXPECTED(Z_TYPE_PP(var_ptr) == IS_OBJECT)</span><br><span class="line">       &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, get)</span><br><span class="line">       &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, set)) {</span><br><span class="line">        /* proxy object */</span><br><span class="line">        zval *val = Z_OBJ_HANDLER_PP(var_ptr, get)(*var_ptr TSRMLS_CC);</span><br><span class="line">        Z_ADDREF_P(val);</span><br><span class="line">        fast_increment_function(val);</span><br><span class="line">        Z_OBJ_HANDLER_PP(var_ptr, set)(var_ptr, val TSRMLS_CC);</span><br><span class="line">        zval_ptr_dtor(&amp;val);</span><br><span class="line">    } else {</span><br><span class="line">        fast_increment_function(*var_ptr);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    if (RETURN_VALUE_USED(opline)) {</span><br><span class="line">        PZVAL_LOCK(*var_ptr);</span><br><span class="line">        EX_T(opline-&gt;result.var).var.ptr = *var_ptr;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    CHECK_EXCEPTION();</span><br><span class="line">    ZEND_VM_NEXT_OPCODE();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>fast_increment_function&#x51FD;&#x6570;&#x5B9E;&#x9645;&#x8C03;&#x7528;&#x7684;&#x662F;increment_function&#x51FD;&#x6570;&#xFF1A;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">ZEND_API int increment_function(zval op1) </span><br><span class="line">{</span><br><span class="line">    switch (Z_TYPE_P(op1)) {</span><br><span class="line">        case IS_LONG:</span><br><span class="line">            if (Z_LVAL_P(op1) == LONG_MAX) {</span><br><span class="line">                /* switch to double */</span><br><span class="line">                double d = (double)Z_LVAL_P(op1);</span><br><span class="line">                ZVAL_DOUBLE(op1, d+1);</span><br><span class="line">            } else {</span><br><span class="line">            Z_LVAL_P(op1)++;</span><br><span class="line">            }</span><br><span class="line">            break;</span><br><span class="line">        case IS_DOUBLE:</span><br><span class="line">            Z_DVAL_P(op1) = Z_DVAL_P(op1) + 1;</span><br><span class="line">            break;</span><br><span class="line">        case IS_NULL:</span><br><span class="line">            ZVAL_LONG(op1, 1);</span><br><span class="line">            break;</span><br><span class="line">        case IS_STRING: {</span><br><span class="line">                long lval;</span><br><span class="line">                double dval;</span><br><span class="line">    </span><br><span class="line">            switch (is_numeric_string(Z_STRVAL_P(op1), Z_STRLEN_P(op1), &amp;lval, &amp;dval, 0)) {</span><br><span class="line">                    case IS_LONG:</span><br><span class="line">                        str_efree(Z_STRVAL_P(op1));</span><br><span class="line">                        if (lval == LONG_MAX) {</span><br><span class="line">                            /* switch to double */</span><br><span class="line">                            double d = (double)lval;</span><br><span class="line">                            ZVAL_DOUBLE(op1, d+1);</span><br><span class="line">                        } else {</span><br><span class="line">                            ZVAL_LONG(op1, lval+1);</span><br><span class="line">                        }</span><br><span class="line">                        break;</span><br><span class="line">                    case IS_DOUBLE:</span><br><span class="line">                        str_efree(Z_STRVAL_P(op1));</span><br><span class="line">                        ZVAL_DOUBLE(op1, dval+1);</span><br><span class="line">                        break;</span><br><span class="line">                    default:</span><br><span class="line">                        /* Perl style string increment */</span><br><span class="line">                        increment_string(op1);</span><br><span class="line">                        break;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            break;</span><br><span class="line">        case IS_OBJECT:</span><br><span class="line">            if (Z_OBJ_HANDLER_P(op1, do_operation)) {</span><br><span class="line">                zval *op2;</span><br><span class="line">                int res;</span><br><span class="line">                TSRMLS_FETCH();</span><br><span class="line">    </span><br><span class="line">                MAKE_STD_ZVAL(op2);</span><br><span class="line">                ZVAL_LONG(op2, 1);</span><br><span class="line">            res = Z_OBJ_HANDLER_P(op1, do_operation)(ZEND_ADD, op1, op1, op2 TSRMLS_CC);</span><br><span class="line">                zval_ptr_dtor(&amp;op2);</span><br><span class="line">    </span><br><span class="line">                return res;</span><br><span class="line">            }</span><br><span class="line">            return FAILURE;</span><br><span class="line">        default:</span><br><span class="line">            return FAILURE;</span><br><span class="line">    }</span><br><span class="line">    return SUCCESS;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>&#x9996;&#x5148;&#x8C03;&#x7528;_get_zval_ptr_ptr_cv_BP_VAR_RW&#x51FD;&#x6570;&#x83B7;&#x53D6;CV(Compiled variable)&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#xFF1B;<br>&#x5176;&#x6B21;&#x4F1A;&#x8C03;&#x7528;fast_increment_function&#x51FD;&#x6570;&#xFF0C;&#x518D;&#x8C03;&#x7528;increment_function&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x53D8;&#x91CF;&#x7684;&#x589E;&#x52A0;&#x64CD;&#x4F5C;&#xFF0C;<br>&#x5728;increment_function&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x6765;&#x8FDB;&#x884C;&#x5BF9;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4ECE;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x4F9D;&#x6B21;&#x5224;&#x65AD;&#x7684;&#x7C7B;&#x578B;&#x6709;IS_LONG/IS_DOUBLE/IS_NULL/IS_STRING/IS_OBJECT&#x3002;<br>&#x5982;&#x679C;&#x662F;IS_LONG&#x7C7B;&#x578B;&#xFF0C;&#x82E5;&#x53D8;&#x91CF;&#x8FBE;&#x5230;long&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x8F6C;&#x5316;&#x4E3A;double&#x7C7B;&#x578B;&#x540E;&#x52A0;1&#xFF0C;&#x5426;&#x5219;&#x76F4;&#x63A5;&#x52A0;1&#xFF1B;<br>&#x5982;&#x679C;&#x662F;IS_DOUBLE&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x52A0;1&#xFF1B;<br>&#x5982;&#x679C;&#x662F;IS_NULL&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x4F1A;&#x8C03;&#x7528;&#x5B8F;ZVAL_LONG(op1, 1)&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;long&#x7C7B;&#x578B;&#x7684;1&#xFF1B;<br>&#x5982;&#x679C;&#x662F;IS_STRING&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x4F1A;&#x5148;&#x5C06;&#x5176;&#x8F6C;&#x5316;&#x4E3A;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6839;&#x636E;&#x4E0A;&#x9762;&#x5224;&#x65AD;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x7684;&#x903B;&#x8F91;&#x5224;&#x65AD;&#xFF1B;</p>
-<p>&#x5982;&#x679C;&#x662F;IS_OBJECT&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x5176;&#x5185;&#x90E8;&#x5B9A;&#x4E49;&#x4E86;&#x8FD0;&#x7B97;&#x7B26;&#x64CD;&#x4F5C;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x90A3;&#x5C31;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;handler&#x6765;&#x5904;&#x7406;,&#x8FDB;&#x884C;                                                                                    </p>
+<p>‘A’执行递增，结果为’B’；‘Z’执行递增，结果为’AA‘,’C9’递增，结果为’D0’。这和 Perl 相似。</p>
+<h3 id="php 源码分析 -a- 与 -a"><a href="#php 源码分析 -a- 与 -a" class="headerlink" title="php 源码分析:$a++ 与 ++$a"></a>php 源码分析:<code>$</code>a++ 与 ++<code>$</code>a</h3><p>首先说明一下，此处的分析基于 php5.6 的源码分析。</p>
+<p>对于前缀自增(++$a)，包含的 opcode 为 PRE_INC，其最终调用的是 Zend/zend_vm_execute.h 文件中的 ZEND_PRE_INC_SPEC_CV_HANDLER 函数，源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">static int ZEND_FASTCALL  ZEND_PRE_INC_SPEC_CV_HANDLER(ZEND_OPCODE_HANDLER_ARGS)</span><br><span class="line">&#123;</span><br><span class="line">    USE_OPLINE</span><br><span class="line">    zval **var_ptr;</span><br><span class="line">    </span><br><span class="line">    SAVE_OPLINE();</span><br><span class="line">    var_ptr = _get_zval_ptr_ptr_cv_BP_VAR_RW(execute_data, opline-&gt;op1.var TSRMLS_CC);</span><br><span class="line">    </span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(var_ptr == NULL)) &#123;</span><br><span class="line">        zend_error_noreturn(E_ERROR, &quot;Cannot increment/decrement overloaded objects nor string offsets&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(*var_ptr == &amp;EG(error_zval))) &#123;</span><br><span class="line">        if (RETURN_VALUE_USED(opline)) &#123;</span><br><span class="line">            PZVAL_LOCK(&amp;EG(uninitialized_zval));</span><br><span class="line">            EX_T(opline-&gt;result.var).var.ptr = &amp;EG(uninitialized_zval);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        CHECK_EXCEPTION();</span><br><span class="line">        ZEND_VM_NEXT_OPCODE();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    SEPARATE_ZVAL_IF_NOT_REF(var_ptr);</span><br><span class="line">    </span><br><span class="line">    if (UNEXPECTED(Z_TYPE_PP(var_ptr) == IS_OBJECT)</span><br><span class="line">       &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, get)</span><br><span class="line">       &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, set)) &#123;</span><br><span class="line">        /* proxy object */</span><br><span class="line">        zval *val = Z_OBJ_HANDLER_PP(var_ptr, get)(*var_ptr TSRMLS_CC);</span><br><span class="line">        Z_ADDREF_P(val);</span><br><span class="line">        fast_increment_function(val);</span><br><span class="line">        Z_OBJ_HANDLER_PP(var_ptr, set)(var_ptr, val TSRMLS_CC);</span><br><span class="line">        zval_ptr_dtor(&amp;val);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        fast_increment_function(*var_ptr);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (RETURN_VALUE_USED(opline)) &#123;</span><br><span class="line">        PZVAL_LOCK(*var_ptr);</span><br><span class="line">        EX_T(opline-&gt;result.var).var.ptr = *var_ptr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    CHECK_EXCEPTION();</span><br><span class="line">    ZEND_VM_NEXT_OPCODE();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>fast_increment_function 函数实际调用的是 increment_function 函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">ZEND_API int increment_function(zval op1) </span><br><span class="line">&#123;</span><br><span class="line">    switch (Z_TYPE_P(op1)) &#123;</span><br><span class="line">        case IS_LONG:</span><br><span class="line">            if (Z_LVAL_P(op1) == LONG_MAX) &#123;</span><br><span class="line">                /* switch to double */</span><br><span class="line">                double d = (double)Z_LVAL_P(op1);</span><br><span class="line">                ZVAL_DOUBLE(op1, d+1);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">            Z_LVAL_P(op1)++;</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IS_DOUBLE:</span><br><span class="line">            Z_DVAL_P(op1) = Z_DVAL_P(op1) + 1;</span><br><span class="line">            break;</span><br><span class="line">        case IS_NULL:</span><br><span class="line">            ZVAL_LONG(op1, 1);</span><br><span class="line">            break;</span><br><span class="line">        case IS_STRING: &#123;</span><br><span class="line">                long lval;</span><br><span class="line">                double dval;</span><br><span class="line">    </span><br><span class="line">            switch (is_numeric_string(Z_STRVAL_P(op1), Z_STRLEN_P(op1), &amp;lval, &amp;dval, 0)) &#123;</span><br><span class="line">                    case IS_LONG:</span><br><span class="line">                        str_efree(Z_STRVAL_P(op1));</span><br><span class="line">                        if (lval == LONG_MAX) &#123;</span><br><span class="line">                            /* switch to double */</span><br><span class="line">                            double d = (double)lval;</span><br><span class="line">                            ZVAL_DOUBLE(op1, d+1);</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            ZVAL_LONG(op1, lval+1);</span><br><span class="line">                        &#125;</span><br><span class="line">                        break;</span><br><span class="line">                    case IS_DOUBLE:</span><br><span class="line">                        str_efree(Z_STRVAL_P(op1));</span><br><span class="line">                        ZVAL_DOUBLE(op1, dval+1);</span><br><span class="line">                        break;</span><br><span class="line">                    default:</span><br><span class="line">                        /* Perl style string increment */</span><br><span class="line">                        increment_string(op1);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">        case IS_OBJECT:</span><br><span class="line">            if (Z_OBJ_HANDLER_P(op1, do_operation)) &#123;</span><br><span class="line">                zval *op2;</span><br><span class="line">                int res;</span><br><span class="line">                TSRMLS_FETCH();</span><br><span class="line">    </span><br><span class="line">                MAKE_STD_ZVAL(op2);</span><br><span class="line">                ZVAL_LONG(op2, 1);</span><br><span class="line">            res = Z_OBJ_HANDLER_P(op1, do_operation)(ZEND_ADD, op1, op1, op2 TSRMLS_CC);</span><br><span class="line">                zval_ptr_dtor(&amp;op2);</span><br><span class="line">    </span><br><span class="line">                return res;</span><br><span class="line">            &#125;</span><br><span class="line">            return FAILURE;</span><br><span class="line">        default:</span><br><span class="line">            return FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    return SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先调用_get_zval_ptr_ptr_cv_BP_VAR_RW 函数获取 CV(Compiled variable)类型变量；<br>其次会调用 fast_increment_function 函数，再调用 increment_function 函数，实现变量的增加操作，<br>在 increment_function 函数中，会根据变量的类型来进行对应的操作，从上面可以看出，依次判断的类型有 IS_LONG/IS_DOUBLE/IS_NULL/IS_STRING/IS_OBJECT。<br>如果是 IS_LONG 类型，若变量达到 long 的最大值，则将其转化为 double 类型后加 1，否则直接加 1；<br>如果是 IS_DOUBLE 类型，则直接加 1；<br>如果是 IS_NULL 类型，则会调用宏 ZVAL_LONG(op1, 1)，直接返回 long 类型的 1；<br>如果是 IS_STRING 类型，则会先将其转化为数字类型，然后再根据上面判断数字类型的逻辑判断；</p>
+<p>如果是 IS_OBJECT 类型，并且其内部定义了运算符操作的实现，那就调用这个 handler 来处理, 进行                                                                                    </p>
 <blockquote>
-<p>&#x7B80;&#x8A00;&#x4E4B;&#xFF0C;&#x524D;&#x7F00;&#x81EA;&#x589E;&#x5B9E;&#x9645;&#x4E0A;&#x64CD;&#x4F5C;&#x7684;&#x662F;&#x53D8;&#x91CF;&#x672C;&#x8EAB;&#xFF0C;&#x5728;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x4E5F;&#x662F;&#x53D8;&#x91CF;&#x672C;&#x8EAB;&#x3002;</p>
+<p>简言之，前缀自增实际上操作的是变量本身，在表达式中使用的也是变量本身。</p>
 </blockquote>
-<p>&#x5BF9;&#x4E8E;&#x540E;&#x7F00;&#x81EA;&#x589E;($a++)&#xFF0C;&#x5305;&#x542B;&#x7684;opcode&#x4E3A;POST_INC&#xFF0C;&#x5176;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x7684;&#x662F;Zend/zend_vm_execute.h&#x6587;&#x4EF6;&#x4E2D;&#x7684;ZEND_POST_INC_SPEC_CV_HANDLER&#x51FD;&#x6570;&#xFF0C;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static int ZEND_FASTCALL  ZEND_POST_INC_SPEC_CV_HANDLER(ZEND_OPCODE_HANDLER_ARGS)</span><br><span class="line">{</span><br><span class="line">    USE_OPLINE</span><br><span class="line">    zval **var_ptr, *retval;</span><br><span class="line">    </span><br><span class="line">    SAVE_OPLINE();</span><br><span class="line">    var_ptr = _get_zval_ptr_ptr_cv_BP_VAR_RW(execute_data, opline-&gt;op1.var TSRMLS_CC);</span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(var_ptr == NULL)) {</span><br><span class="line">        zend_error_noreturn(E_ERROR, &quot;Cannot increment/decrement overloaded objects nor string offsets&quot;);</span><br><span class="line">    }</span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(*var_ptr == &amp;EG(error_zval))) {</span><br><span class="line">        ZVAL_NULL(&amp;EX_T(opline-&gt;result.var).tmp_var);</span><br><span class="line">    </span><br><span class="line">        CHECK_EXCEPTION();</span><br><span class="line">        ZEND_VM_NEXT_OPCODE();</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    retval = &amp;EX_T(opline-&gt;result.var).tmp_var;</span><br><span class="line">    ZVAL_COPY_VALUE(retval, *var_ptr);</span><br><span class="line">    zendi_zval_copy_ctor(*retval);</span><br><span class="line">    </span><br><span class="line">    SEPARATE_ZVAL_IF_NOT_REF(var_ptr);</span><br><span class="line">    if (UNEXPECTED(Z_TYPE_PP(var_ptr) == IS_OBJECT)</span><br><span class="line">    &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, get)</span><br><span class="line">       &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, set)) {</span><br><span class="line">        /* proxy object */</span><br><span class="line">        zval *val = Z_OBJ_HANDLER_PP(var_ptr, get)(*var_ptr TSRMLS_CC);</span><br><span class="line">        Z_ADDREF_P(val);</span><br><span class="line">        fast_increment_function(val);</span><br><span class="line">        Z_OBJ_HANDLER_PP(var_ptr, set)(var_ptr, val TSRMLS_CC);</span><br><span class="line">        zval_ptr_dtor(&amp;val);</span><br><span class="line">    } else {</span><br><span class="line">        fast_increment_function(*var_ptr);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    CHECK_EXCEPTION();</span><br><span class="line">    ZEND_VM_NEXT_OPCODE();</span><br><span class="line">&#xFF5D;</span><br></pre></td></tr></table></figure>
-<p>&#x4ECE;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x540E;&#x7F00;&#x81EA;&#x589E;&#x4E0E;&#x524D;&#x7F00;&#x81EA;&#x589E;&#x5728;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x7684;&#x5927;&#x90E8;&#x5206;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x70B9;&#x5728;&#x4E8E;&#xFF0C;&#x540E;&#x7F00;&#x81EA;&#x589E;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x539F;&#x59CB;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x5E76;&#x6CA1;&#x6709;&#x524D;&#x7F00;&#x81EA;&#x589E;&#x7684;RETURN_VALUE_USED&#x64CD;&#x4F5C;&#x3002; </p>
+<p>对于后缀自增($a++)，包含的 opcode 为 POST_INC，其最终调用的是 Zend/zend_vm_execute.h 文件中的 ZEND_POST_INC_SPEC_CV_HANDLER 函数，源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static int ZEND_FASTCALL  ZEND_POST_INC_SPEC_CV_HANDLER(ZEND_OPCODE_HANDLER_ARGS)</span><br><span class="line">&#123;</span><br><span class="line">    USE_OPLINE</span><br><span class="line">    zval **var_ptr, *retval;</span><br><span class="line">    </span><br><span class="line">    SAVE_OPLINE();</span><br><span class="line">    var_ptr = _get_zval_ptr_ptr_cv_BP_VAR_RW(execute_data, opline-&gt;op1.var TSRMLS_CC);</span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(var_ptr == NULL)) &#123;</span><br><span class="line">        zend_error_noreturn(E_ERROR, &quot;Cannot increment/decrement overloaded objects nor string offsets&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (IS_CV == IS_VAR &amp;&amp; UNEXPECTED(*var_ptr == &amp;EG(error_zval))) &#123;</span><br><span class="line">        ZVAL_NULL(&amp;EX_T(opline-&gt;result.var).tmp_var);</span><br><span class="line">    </span><br><span class="line">        CHECK_EXCEPTION();</span><br><span class="line">        ZEND_VM_NEXT_OPCODE();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    retval = &amp;EX_T(opline-&gt;result.var).tmp_var;</span><br><span class="line">    ZVAL_COPY_VALUE(retval, *var_ptr);</span><br><span class="line">    zendi_zval_copy_ctor(*retval);</span><br><span class="line">    </span><br><span class="line">    SEPARATE_ZVAL_IF_NOT_REF(var_ptr);</span><br><span class="line">    if (UNEXPECTED(Z_TYPE_PP(var_ptr) == IS_OBJECT)</span><br><span class="line">    &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, get)</span><br><span class="line">       &amp;&amp; Z_OBJ_HANDLER_PP(var_ptr, set)) &#123;</span><br><span class="line">        /* proxy object */</span><br><span class="line">        zval *val = Z_OBJ_HANDLER_PP(var_ptr, get)(*var_ptr TSRMLS_CC);</span><br><span class="line">        Z_ADDREF_P(val);</span><br><span class="line">        fast_increment_function(val);</span><br><span class="line">        Z_OBJ_HANDLER_PP(var_ptr, set)(var_ptr, val TSRMLS_CC);</span><br><span class="line">        zval_ptr_dtor(&amp;val);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        fast_increment_function(*var_ptr);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    CHECK_EXCEPTION();</span><br><span class="line">    ZEND_VM_NEXT_OPCODE();</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p>从上面可以看出，后缀自增与前缀自增在底层实现的大部分是类似的，但是不同的点在于，后缀自增多了一个临时变量，用于存储原始的变量的值，但是它并没有前缀自增的 RETURN_VALUE_USED 操作。 </p>
 <blockquote>
-<p>&#x7B80;&#x8A00;&#x4E4B;&#xFF0C;&#x540E;&#x7F00;&#x81EA;&#x589E;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5B58;&#x653E;&#x5728;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x4E2D;&#x7684;&#x503C;&#xFF0C;&#x5373;&#x53D8;&#x91CF;&#x7684;&#x539F;&#x59CB;&#x503C;&#xFF0C;&#x800C;&#x6700;&#x7EC8;&#x53D8;&#x91CF;&#x672C;&#x8EAB;&#x7684;&#x503C;&#x8FD8;&#x662F;&#x4F1A;&#x589E;&#x52A0;&#x3002;</p>
+<p>简言之，后缀自增使用的是存放在临时变量中的值，即变量的原始值，而最终变量本身的值还是会增加。</p>
 </blockquote>
-<h3 id="&#x4E00;&#x4E9B;&#x5947;&#x602A;&#x7684;php&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;"><a href="#&#x4E00;&#x4E9B;&#x5947;&#x602A;&#x7684;php&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;" class="headerlink" title="&#x4E00;&#x4E9B;&#x5947;&#x602A;&#x7684;php&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;"></a>&#x4E00;&#x4E9B;&#x5947;&#x602A;&#x7684;php&#x81EA;&#x589E;&#x548C;&#x81EA;&#x51CF;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a = &apos;2D9&apos;;	$a++;	//string 2E0</span><br><span class="line">$a = &apos;2E0&apos;;	$a++;	//float 3</span><br><span class="line">$a = &apos;010&apos;;	$a++;	//11</span><br><span class="line">$a = 010;	$a++;	//9</span><br></pre></td></tr></table></figure>
-<p>&#x7B2C;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7406;&#x89E3;&#x3002;<br><br>&#x5BF9;&#x4E8E;&#x7B2C;&#x4E8C;&#x4E2A;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x7684; &#x2018;2E1&#x2019;&#xFF0C;&#x800C;&#x662F;3&#x3002;&#x6CE8;&#x610F;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A; float 3&#xFF0C;&#x539F;&#x6765;&#x8FD9;&#x91CC; <code>$</code>a=&#x2019;2E0&#x2019;,&#x5BF9;<code>$</code>a&#x6267;&#x884C;&#x9012;&#x589E;&#xFF0C;&#x7531;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;<code>$</code>a&#x4E2D;&#x5305;&#x542B;&#x2019;E&#x2019;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x88AB;&#x5F53;&#x4F5C;float&#x6765;&#x53D6;&#x503C;&#x3002;&#x79D1;&#x5B66;&#x8BA1;&#x6570;&#x6CD5; 2E0 &#x8868;&#x793A; 2*10^0 &#x503C;&#x4E3A;2&#xFF0C;&#x5BF9;&#x5176;&#x52A0;1&#x5219;&#x7ED3;&#x679C;&#x4E3A;3&#x3002;<br><br>&#x5BF9;&#x4E8E;&#x7B2C;&#x4E09;&#x4E2A;&#xFF0C;<code>$</code>a=&#x2019;010&#x2019;&#xFF0C;&#x5BF9;<code>$</code>a&#x6267;&#x884C;&#x9012;&#x589E;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;<code>$</code>a&#x4F1A;&#x88AB;&#x5F53;&#x4F5C;integer&#x6765;&#x5904;&#x7406;&#xFF0C;&#x5373;&#x4E3A;10&#xFF0C;&#x5BF9;&#x5176;&#x52A0;1&#x5219;&#x7ED3;&#x679C;&#x4E3A;11&#x3002;<br><br>&#x5BF9;&#x4E8E;&#x7B2C;&#x56DB;&#x4E2A;&#xFF0C;<code>$</code>a=010&#xFF0C;&#x5BF9;<code>$</code>a&#x6267;&#x884C;&#x9012;&#x589E;&#xFF0C;<code>$</code>a&#x672C;&#x6765;&#x5C31;&#x662F;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#xFF0C;&#x7531;&#x4E8E;&#x662F;0&#x5F00;&#x5934;&#xFF0C;&#x8868;&#x793A;8&#x8FDB;&#x5236;&#xFF0C;&#x5373;&#x4E3A;8&#xFF0C;&#x5BF9;&#x5176;&#x52A0;1&#x5219;&#x7ED3;&#x679C;&#x4E3A;9&#x3002;<br></p>
+<h3 id="一些奇怪的 php 自增和自减"><a href="# 一些奇怪的 php 自增和自减" class="headerlink" title="一些奇怪的 php 自增和自减"></a>一些奇怪的 php 自增和自减</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a = &apos;2D9&apos;;	$a++;	//string 2E0</span><br><span class="line">$a = &apos;2E0&apos;;	$a++;	//float 3</span><br><span class="line">$a = &apos;010&apos;;	$a++;	//11</span><br><span class="line">$a = 010;	$a++;	//9</span><br></pre></td></tr></table></figure>
+<p>第一个很好理解。<br><br>对于第二个，并不是我们想的 ‘2E1’，而是 3。注意输出结果为 float 3，原来这里 <code>$</code>a=’2E0’, 对 <code>$</code>a 执行递增，由于字符串<code>$</code>a 中包含’E’，所以会被当作 float 来取值。科学计数法 2E0 表示 2*10^0 值为 2，对其加 1 则结果为 3。<br><br> 对于第三个，<code>$</code>a=’010’，对 <code>$</code>a 执行递增，字符串<code>$</code>a 会被当作 integer 来处理，即为 10，对其加 1 则结果为 11。<br><br> 对于第四个，<code>$</code>a=010，对<code>$</code>a 执行递增，<code>$</code>a 本来就是数字类型，由于是 0 开头，表示 8 进制，即为 8，对其加 1 则结果为 9。<br></p>
 <h1 id="Happy-coding"><a href="#Happy-coding" class="headerlink" title="Happy coding."></a>Happy coding.</h1>
       
     </div>
 
-    <div>
-      
-        
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+    
+    
 
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag">#php</a>
+            <a href="/tags/php/" rel="tag"># php</a>
           
-            <a href="/tags/source/" rel="tag">#source</a>
+            <a href="/tags/source/" rel="tag"># source</a>
           
-            <a href="/tags/源码/" rel="tag">#源码</a>
+            <a href="/tags/源码/" rel="tag"># 源码</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -435,6 +481,8 @@
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -449,6 +497,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -462,11 +514,8 @@
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -482,115 +531,180 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/icon.jpg"
-               alt="Max Fang" />
-          <p class="site-author-name" itemprop="name">Max Fang</p>
-          <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Max Fang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/FX-Max" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/CSUMax" target="_blank" title="微博"><i class="fa fa-fw fa-globe"></i>微博</a>
+                  
+                </span>
+              
             </div>
           
 
-        </nav>
+          
+          
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
+          
+          
 
-        <div class="links-of-author motion-element">
           
             
-              <span class="links-of-author-item">
-                <a href="https://github.com/FX-Max" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/CSUMax" target="_blank" title="微博">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  微博
-                </a>
-              </span>
-            
           
+          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自增和自减基础"><span class="nav-number">1.</span> <span class="nav-text">自增和自减基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php-中的递增和递减"><span class="nav-number">2.</span> <span class="nav-text">php 中的递增和递减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php源码分析-a-与-a"><span class="nav-number">3.</span> <span class="nav-text">php源码分析:$a++与++$a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些奇怪的php自增和自减"><span class="nav-number">4.</span> <span class="nav-text">一些奇怪的php自增和自减</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Happy-coding"><span class="nav-number"></span> <span class="nav-text">Happy coding.</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自增和自减基础"><span class="nav-number">1.</span> <span class="nav-text">自增和自减基础 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php- 中的递增和递减"><span class="nav-number">2.</span> <span class="nav-text">php 中的递增和递减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php 源码分析 -a- 与 -a"><span class="nav-number">3.</span> <span class="nav-text">php 源码分析:$a++ 与 ++$a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些奇怪的 php 自增和自减"><span class="nav-number">4.</span> <span class="nav-text">一些奇怪的 php 自增和自减</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Happy-coding"><span class="nav-number"></span> <span class="nav-text">Happy coding.</span></a></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -603,36 +717,55 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Max Fang</span>
+
+  
+
+  
 </div>
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.6</div>
+
+
+
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -651,72 +784,117 @@
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
 
 
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
 
 
 
-  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
   
 
   

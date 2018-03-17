@@ -1,15 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
 
 
 
@@ -21,58 +31,86 @@
 
 
 
-  <meta name="baidu-site-verification" content="8uyFmQ7hRC" />
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
   
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="mysql,运维," />
-
-
+  <meta name="description" content="最近开始摸索MySQL主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：  ERROR 1201 (HY000): Could not initialize master info structure .  出现这个错误的原因是因为从库之前已经做过主从复制,所以需要先停止从库，再进行从库同步设置。">
+<meta name="keywords" content="mysql,运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 主从复制 -Could not initialize master info structure">
+<meta property="og:url" content="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/index.html">
+<meta property="og:site_name" content="Max的Blog">
+<meta property="og:description" content="最近开始摸索MySQL主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：  ERROR 1201 (HY000): Could not initialize master info structure .  出现这个错误的原因是因为从库之前已经做过主从复制,所以需要先停止从库，再进行从库同步设置。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2016-06-18T06:44:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 主从复制 -Could not initialize master info structure">
+<meta name="twitter:description" content="最近开始摸索MySQL主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：  ERROR 1201 (HY000): Could not initialize master info structure .  出现这个错误的原因是因为从库之前已经做过主从复制,所以需要先停止从库，再进行从库同步设置。">
 
 
 
@@ -81,51 +119,21 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="canonical" href="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/"/>
 
 
 
-
-
-
-<meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5F00;&amp;#x59CB;&amp;#x6478;&amp;#x7D22;MySQL&amp;#x4E3B;&amp;#x4ECE;&amp;#x590D;&amp;#x5236;&amp;#xFF0C;&amp;#x5728;&amp;#x6D4B;&amp;#x8BD5;&amp;#x73AF;&amp;#x5883;&amp;#x8FDB;&amp;#x884C;&amp;#x4E86;&amp;#x76F8;&amp;#x5173;&amp;#x6D4B;&amp;#x8BD5;&amp;#xFF0C;&amp;#">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL 主从复制 -Could not initialize master info structure">
-<meta property="og:url" content="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/index.html">
-<meta property="og:site_name" content="Max的Blog">
-<meta property="og:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5F00;&amp;#x59CB;&amp;#x6478;&amp;#x7D22;MySQL&amp;#x4E3B;&amp;#x4ECE;&amp;#x590D;&amp;#x5236;&amp;#xFF0C;&amp;#x5728;&amp;#x6D4B;&amp;#x8BD5;&amp;#x73AF;&amp;#x5883;&amp;#x8FDB;&amp;#x884C;&amp;#x4E86;&amp;#x76F8;&amp;#x5173;&amp;#x6D4B;&amp;#x8BD5;&amp;#xFF0C;&amp;#">
-<meta property="og:updated_time" content="2016-06-18T06:44:59.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL 主从复制 -Could not initialize master info structure">
-<meta name="twitter:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5F00;&amp;#x59CB;&amp;#x6478;&amp;#x7D22;MySQL&amp;#x4E3B;&amp;#x4ECE;&amp;#x590D;&amp;#x5236;&amp;#xFF0C;&amp;#x5728;&amp;#x6D4B;&amp;#x8BD5;&amp;#x73AF;&amp;#x5883;&amp;#x8FDB;&amp;#x884C;&amp;#x4E86;&amp;#x76F8;&amp;#x5173;&amp;#x6D4B;&amp;#x8BD5;&amp;#xFF0C;&amp;#">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 6296429059899393000,
-      author: 'Author'
-    }
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
   };
 </script>
 
-
-
-
-  <link rel="canonical" href="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/"/>
-
-  <title> MySQL 主从复制 -Could not initialize master info structure | Max的Blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
+  <title>MySQL 主从复制 -Could not initialize master info structure | Max的Blog</title>
   
+
+
+
 
 
 
@@ -133,7 +141,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?67809b4ebdab46caa23b4831eaa0da9a";
+      hm.src = "https://hm.baidu.com/hm.js?67809b4ebdab46caa23b4831eaa0da9a";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -142,38 +150,71 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"> 
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Max的Blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Max的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <p class="site-subtitle"></p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -183,54 +224,22 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
       
 
       
@@ -238,14 +247,28 @@
   
 
   
+
+  
 </nav>
+
+
+  
+
+
 
  </div>
     </header>
 
+    
+
+
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -253,57 +276,72 @@
     
 
   
-  
 
   
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Max的Blog">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                MySQL 主从复制 -Could not initialize master info structure
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">MySQL 主从复制 -Could not initialize master info structure</h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-06-18T14:18:07+08:00" content="2016-06-18">
-              2016-06-18
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-18T14:18:07+08:00">2016-06-18</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
 
                 
                 
-
               
             </span>
           
@@ -313,29 +351,34 @@
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p> &#x6700;&#x8FD1;&#x5F00;&#x59CB;&#x6478;&#x7D22;MySQL&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#xFF0C;&#x5728;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x8FDB;&#x884C;&#x4E86;&#x76F8;&#x5173;&#x6D4B;&#x8BD5;&#xFF0C;&#x4E5F;&#x9047;&#x5230;&#x4E86;&#x4E0D;&#x5C11;&#x7684;&#x5751;&#x3002;&#x5982;&#x5728;&#x4ECE;&#x5E93;&#x8BBE;&#x7F6E;&#x540C;&#x6B65;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x62A5;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#xFF1A;</p>
+        <p> 最近开始摸索 MySQL 主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：</p>
 <blockquote>
 <p>ERROR 1201 (HY000): Could not initialize master info structure .</p>
 </blockquote>
-<p>&#x51FA;&#x73B0;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x539F;&#x56E0;&#x662F;&#x56E0;&#x4E3A;&#x4ECE;&#x5E93;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x505A;&#x8FC7;&#x4E3B;&#x4ECE;&#x590D;&#x5236;,&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5148;&#x505C;&#x6B62;&#x4ECE;&#x5E93;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x4ECE;&#x5E93;&#x540C;&#x6B65;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p> 出现这个错误的原因是因为从库之前已经做过主从复制, 所以需要先停止从库，再进行从库同步设置。</p>
 <a id="more"></a>
-<p>&#x5177;&#x4F53;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p> 具体的解决方法如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; change master to master_host=&apos;192.168.1.51&apos;, master_user=&apos;replslave&apos;, master_password=&apos;replslave&apos;, master_log_file=&apos;mysql-bin-000002&apos;,master_log_pos=168;   </span><br><span class="line">ERROR 1201 (HY000): Could not initialize master info structure; more error messa  </span><br><span class="line">ges can be found in the MySQL error log </span><br><span class="line">mysql&gt; stop slave;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.00 sec) </span><br><span class="line">mysql&gt; reset slave;  </span><br><span class="line">Query OK, 0 rows affected (0.00 sec) </span><br><span class="line">mysql&gt; change master to master_host=&apos;192.168.1.51&apos;, master_user=&apos;replslave&apos;, master_password=&apos;replslave&apos;, master_log_file=&apos;mysql-bin-000002&apos;,master_log_pos=168; </span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br></pre></td></tr></table></figure>
 <hr>
 <p>Happy Coding.</p>
@@ -343,28 +386,31 @@
       
     </div>
 
-    <div>
-      
-        
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+    
+    
 
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag">#mysql</a>
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
-            <a href="/tags/运维/" rel="tag">#运维</a>
+            <a href="/tags/运维/" rel="tag"># 运维</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -376,6 +422,8 @@
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -390,6 +438,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -403,11 +455,8 @@
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -423,115 +472,155 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/icon.jpg"
-               alt="Max Fang" />
-          <p class="site-author-name" itemprop="name">Max Fang</p>
-          <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Max Fang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/FX-Max" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/CSUMax" target="_blank" title="微博"><i class="fa fa-fw fa-globe"></i>微博</a>
+                  
+                </span>
+              
             </div>
           
 
-        </nav>
+          
+          
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
+          
+          
 
-        <div class="links-of-author motion-element">
           
             
-              <span class="links-of-author-item">
-                <a href="https://github.com/FX-Max" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/CSUMax" target="_blank" title="微博">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  微博
-                </a>
-              </span>
-            
           
+          
+
         </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        
-        
-
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
-            
-          </div>
-        </section>
+
       
 
     </div>
@@ -544,36 +633,55 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Max Fang</span>
+
+  
+
+  
 </div>
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.6</div>
+
+
+
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -592,72 +700,117 @@
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
 
 
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
 
 
 
-  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
   
 
   
