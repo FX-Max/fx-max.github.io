@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -99,28 +99,27 @@
 
 
 
-  <meta name="description" content="404 - MaxFang Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Max&#39;s Blog">
-<meta property="og:url" content="http://maxfang.me/404.html">
+  <meta name="description" content="最近开始摸索MySQL主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：  ERROR 1201 (HY000): Could not initialize master info structure .  出现这个错误的原因是因为从库之前已经做过主从复制,所以需要先停止从库，再进行从库同步设置。">
+<meta name="keywords" content="mysql,运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 主从复制 -Could not initialize master info structure">
+<meta property="og:url" content="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/index.html">
 <meta property="og:site_name" content="Max&#39;s Blog">
-<meta property="og:description" content="404 - MaxFang Blog">
+<meta property="og:description" content="最近开始摸索MySQL主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：  ERROR 1201 (HY000): Could not initialize master info structure .  出现这个错误的原因是因为从库之前已经做过主从复制,所以需要先停止从库，再进行从库同步设置。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-06-17T11:32:05.000Z">
+<meta property="og:updated_time" content="2016-06-18T06:44:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Max&#39;s Blog">
-<meta name="twitter:description" content="404 - MaxFang Blog">
+<meta name="twitter:title" content="MySQL 主从复制 -Could not initialize master info structure">
+<meta name="twitter:description" content="最近开始摸索MySQL主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：  ERROR 1201 (HY000): Could not initialize master info structure .  出现这个错误的原因是因为从库之前已经做过主从复制,所以需要先停止从库，再进行从库同步设置。">
 
 
-  
 
-
-  <link rel="alternate" href="/atom.xml" title="Max's Blog" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Max's Blog" type="application/atom+xml">
 
 
 
 
-  <link rel="canonical" href="http://maxfang.me/404.html"/>
+  <link rel="canonical" href="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/">
 
 
 
@@ -130,7 +129,7 @@
   };
 </script>
 
-  <title> | Max's Blog</title>
+  <title>MySQL 主从复制 -Could not initialize master info structure | Max's Blog</title>
   
 
 
@@ -269,76 +268,187 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://maxfang.me/2016/06/18/mysql-master-replication-series-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Max's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline"></h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <!DOCTYPE HTML>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    <title>404 - MaxFang Blog</title>
-    <meta name="description" content="404 错误，页面不存在！">
-    <meta http-equiv="content-type" content="text/html;charset=utf-8;">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="robots" content="all">
-    <meta name="robots" content="index,follow">
-</head>
-<body>
-    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone_v6/lostchild/search_children.js" charset="utf-8"></script>
-</body>
-</html>
-
+          <h1 class="post-title" itemprop="name headline">MySQL 主从复制 -Could not initialize master info structure</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-18T14:18:07+08:00">2016-06-18</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p> 最近开始摸索 MySQL 主从复制，在测试环境进行了相关测试，也遇到了不少的坑。如在从库设置同步的时候，报如下错误：</p>
+<blockquote>
+<p>ERROR 1201 (HY000): Could not initialize master info structure .</p>
+</blockquote>
+<p> 出现这个错误的原因是因为从库之前已经做过主从复制, 所以需要先停止从库，再进行从库同步设置。</p>
+<a id="more"></a>
+<p> 具体的解决方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; change master to master_host=&apos;192.168.1.51&apos;, master_user=&apos;replslave&apos;, master_password=&apos;replslave&apos;, master_log_file=&apos;mysql-bin-000002&apos;,master_log_pos=168;   </span><br><span class="line">ERROR 1201 (HY000): Could not initialize master info structure; more error messa  </span><br><span class="line">ges can be found in the MySQL error log </span><br><span class="line">mysql&gt; stop slave;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.00 sec) </span><br><span class="line">mysql&gt; reset slave;  </span><br><span class="line">Query OK, 0 rows affected (0.00 sec) </span><br><span class="line">mysql&gt; change master to master_host=&apos;192.168.1.51&apos;, master_user=&apos;replslave&apos;, master_password=&apos;replslave&apos;, master_log_file=&apos;mysql-bin-000002&apos;,master_log_pos=168; </span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Happy Coding.</p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+            <a href="/tags/运维/" rel="tag"># 运维</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/11/book-list-2016/" rel="next" title="阅读书单">
+                <i class="fa fa-chevron-left"></i> 阅读书单
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/19/hexo-series-0/" rel="prev" title="hexo 使用札记 - 常用命令">
+                hexo 使用札记 - 常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
