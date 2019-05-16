@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maxfang.me/"/>
-  <updated>2019-05-16T16:20:28.000Z</updated>
+  <updated>2019-05-16T16:29:56.000Z</updated>
   <id>http://maxfang.me/</id>
   
   <author>
@@ -21,17 +21,16 @@
     <link href="http://maxfang.me/2019/05/17/weekly-reading-list-20190519/"/>
     <id>http://maxfang.me/2019/05/17/weekly-reading-list-20190519/</id>
     <published>2019-05-16T16:15:15.000Z</published>
-    <updated>2019-05-16T16:20:28.000Z</updated>
+    <updated>2019-05-16T16:29:56.000Z</updated>
     
-    <content type="html"><![CDATA[<ul><li><p>分库分表技术演进 &amp; 最佳实践</p><p>  <a href="https://yq.aliyun.com/articles/666034" target="_blank" rel="noopener">分库分表技术演进 &amp; 最佳实践</a></p></li><li><p>从原则、方案、策略及难点阐述分库分表 <br>  <a href="https://yq.aliyun.com/articles/653109" target="_blank" rel="noopener"> 从原则、方案、策略及难点阐述分库分表</a></p></li><li><p>MySQL · 引擎特性 · 临时表那些事儿<br>  <a href="http://mysql.taobao.org/monthly/2019/04/01/" target="_blank" rel="noopener">MySQL · 引擎特性 · 临时表那些事儿</a></p></li></ul><hr><blockquote><p>Keep reading. Keep running.</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="技术"><a href="# 技术" class="headerlink" title="技术"></a> 技术 </h2><ul><li><a href="http://mysql.taobao.org/monthly/2019/04/01/" target="_blank" rel="noopener">MySQL · 引擎特性 · 临时表那些事儿 </a></li></ul><h2 id="生活"><a href="# 生活" class="headerlink" title="生活"></a> 生活 </h2><hr><blockquote><p>Keep reading. Keep running.</p></blockquote>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;分库分表技术演进 &amp;amp; 最佳实践&lt;/p&gt;
-&lt;p&gt;  &lt;a href=&quot;https://yq.aliyun.com/articles/666034&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;分库分表技术演进 &amp;amp; 最佳实践&lt;
+        &lt;h2 id=&quot;技术&quot;&gt;&lt;a href=&quot;# 技术&quot; class=&quot;headerlink&quot; title=&quot;技术&quot;&gt;&lt;/a&gt; 技术 &lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://mysql.taobao.org/monthly/2019/04/01/&quot; target=
       
     
     </summary>
@@ -48,18 +47,24 @@
     <link href="http://maxfang.me/2019/05/12/weekly-reading-list-20190512/"/>
     <id>http://maxfang.me/2019/05/12/weekly-reading-list-20190512/</id>
     <published>2019-05-11T16:56:47.000Z</published>
-    <updated>2019-05-11T17:08:35.000Z</updated>
+    <updated>2019-05-16T16:29:36.000Z</updated>
     
-    <content type="html"><![CDATA[<ul><li><p> 详解 DNS 与 CoreDNS 的实现原理 </p><p>  <a href="https://draveness.me/dns-coredns" target="_blank" rel="noopener"> 详解 DNS 与 CoreDNS 的实现原理 </a></p></li><li><p> 分布式事务的实现原理 </p><p>  <a href="https://draveness.me/distributed-transaction-principle" target="_blank" rel="noopener"> 分布式事务的实现原理 </a></p></li><li><p>GraphQL 在微服务架构中的实践 </p><p>  <a href="https://draveness.me/graphql-microservice" target="_blank" rel="noopener">GraphQL 在微服务架构中的实践 </a></p></li><li><p> 浅谈 MVC、MVP 和 MVVM 架构模式 </p><p>  <a href="https://draveness.me/mvx" target="_blank" rel="noopener"> 浅谈 MVC、MVP 和 MVVM 架构模式 </a></p></li><li><p>Git 的奇技淫巧 </p><p>  <a href="https://github.com/521xueweihan/git-tips" target="_blank" rel="noopener">Git 的奇技淫巧 </a></p></li></ul><hr><blockquote><p>Keep reading. Keep running.</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="技术"><a href="# 技术" class="headerlink" title="技术"></a> 技术 </h2><ul><li><p><a href="https://draveness.me/dns-coredns" target="_blank" rel="noopener"> 详解 DNS 与 CoreDNS 的实现原理 </a></p></li><li><p><a href="https://draveness.me/distributed-transaction-principle" target="_blank" rel="noopener"> 分布式事务的实现原理 </a></p></li><li><p><a href="https://draveness.me/graphql-microservice" target="_blank" rel="noopener">GraphQL 在微服务架构中的实践 </a></p></li><li><p><a href="https://draveness.me/mvx" target="_blank" rel="noopener"> 浅谈 MVC、MVP 和 MVVM 架构模式 </a></p></li><li><p><a href="https://github.com/521xueweihan/git-tips" target="_blank" rel="noopener">Git 的奇技淫巧 </a></p></li></ul><a id="more"></a><ul><li><p><a href="https://yq.aliyun.com/articles/666034" target="_blank" rel="noopener"> 分库分表技术演进 &amp; 最佳实践 </a></p></li><li><p><a href="https://yq.aliyun.com/articles/653109" target="_blank" rel="noopener"> 从原则、方案、策略及难点阐述分库分表 </a></p></li></ul><h2 id="生活"><a href="# 生活" class="headerlink" title="生活"></a> 生活 </h2><hr><blockquote><p>Keep reading. Keep running.</p></blockquote>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt; 详解 DNS 与 CoreDNS 的实现原理 &lt;/p&gt;
-&lt;p&gt;  &lt;a href=&quot;https://draveness.me/dns-coredns&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt; 详解 DNS 与 CoreDNS 的实
-      
+      &lt;h2 id=&quot;技术&quot;&gt;&lt;a href=&quot;#技术&quot; class=&quot;headerlink&quot; title=&quot;技术&quot;&gt;&lt;/a&gt;技术&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://draveness.me/dns-coredns&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;详解 DNS 与 CoreDNS 的实现原理&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://draveness.me/distributed-transaction-principle&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;分布式事务的实现原理&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://draveness.me/graphql-microservice&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GraphQL 在微服务架构中的实践&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://draveness.me/mvx&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;浅谈 MVC、MVP 和 MVVM 架构模式&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/521xueweihan/git-tips&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Git的奇技淫巧&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -268,9 +273,9 @@
       <category term="工具" scheme="http://maxfang.me/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="mac" scheme="http://maxfang.me/tags/mac/"/>
-    
       <category term="工具" scheme="http://maxfang.me/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="mac" scheme="http://maxfang.me/tags/mac/"/>
     
   </entry>
   
