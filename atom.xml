@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maxfang.me/"/>
-  <updated>2019-05-11T17:08:35.000Z</updated>
+  <updated>2019-05-16T16:20:28.000Z</updated>
   <id>http://maxfang.me/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周阅读清单 -20190519</title>
+    <link href="http://maxfang.me/2019/05/17/weekly-reading-list-20190519/"/>
+    <id>http://maxfang.me/2019/05/17/weekly-reading-list-20190519/</id>
+    <published>2019-05-16T16:15:15.000Z</published>
+    <updated>2019-05-16T16:20:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>分库分表技术演进 &amp; 最佳实践</p><p>  <a href="https://yq.aliyun.com/articles/666034" target="_blank" rel="noopener">分库分表技术演进 &amp; 最佳实践</a></p></li><li><p>从原则、方案、策略及难点阐述分库分表 <br>  <a href="https://yq.aliyun.com/articles/653109" target="_blank" rel="noopener"> 从原则、方案、策略及难点阐述分库分表</a></p></li><li><p>MySQL · 引擎特性 · 临时表那些事儿<br>  <a href="http://mysql.taobao.org/monthly/2019/04/01/" target="_blank" rel="noopener">MySQL · 引擎特性 · 临时表那些事儿</a></p></li></ul><hr><blockquote><p>Keep reading. Keep running.</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;分库分表技术演进 &amp;amp; 最佳实践&lt;/p&gt;
+&lt;p&gt;  &lt;a href=&quot;https://yq.aliyun.com/articles/666034&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;分库分表技术演进 &amp;amp; 最佳实践&lt;
+      
+    
+    </summary>
+    
+      <category term="阅读" scheme="http://maxfang.me/categories/%E9%98%85%E8%AF%BB/"/>
+    
+    
+      <category term="reading list" scheme="http://maxfang.me/tags/reading-list/"/>
+    
+  </entry>
   
   <entry>
     <title>每周阅读清单 -20190512</title>
@@ -241,9 +268,9 @@
       <category term="工具" scheme="http://maxfang.me/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="工具" scheme="http://maxfang.me/tags/%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="mac" scheme="http://maxfang.me/tags/mac/"/>
+    
+      <category term="工具" scheme="http://maxfang.me/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
