@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maxfang.me/"/>
-  <updated>2020-11-22T13:49:30.441Z</updated>
+  <updated>2020-11-22T13:57:34.784Z</updated>
   <id>http://maxfang.me/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="http://maxfang.me/2020/11/22/restart-hexo-blog/"/>
     <id>http://maxfang.me/2020/11/22/restart-hexo-blog/</id>
     <published>2020-11-22T13:25:48.000Z</published>
-    <updated>2020-11-22T13:49:30.441Z</updated>
+    <updated>2020-11-22T13:57:34.784Z</updated>
     
-    <content type="html"><![CDATA[<p> 这些年尝试了不同的博客工具, hexo, hugo, wp, 还有一些博客内容平台，中间也自己写过博客系统。<br> 最终还是懒得再折腾了，重新切回 hexo，继续记录个人的学习生活。<br> 原来其他地方的文章也不搬了，继续开始吧。</p>]]></content>
+    <content type="html"><![CDATA[<p> 这些年尝试了不同的博客工具, hexo, hugo, wp, 还有一些博客内容平台，中间也自己写过博客系统。<br> 最终还是懒得再折腾了，重新切回 hexo，继续记录个人的学习生活。<br> 原来其他地方的文章也不搬了，继续开始吧。</p><p>Happy Coding.</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt; 这些年尝试了不同的博客工具, hexo, hugo, wp, 还有一些博客内容平台，中间也自己写过博客系统。&lt;br&gt; 最终还是懒得再折腾了，重新切回 hexo，继续记录个人的学习生活。&lt;br&gt; 原来其他地方的文章也不搬了，继续开始吧。&lt;/p&gt;
-
+&lt;p&gt;Happy Codin
       
     
     </summary>
