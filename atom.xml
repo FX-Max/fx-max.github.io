@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://maxfang.me/"/>
-  <updated>2020-11-22T13:57:34.784Z</updated>
+  <updated>2020-12-08T15:05:43.749Z</updated>
   <id>http://maxfang.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL- 出现 MySQL server has gone away 原因和解决方法</title>
+    <link href="http://maxfang.me/2020/12/08/note-mysql-server-has-gone-away/"/>
+    <id>http://maxfang.me/2020/12/08/note-mysql-server-has-gone-away/</id>
+    <published>2020-12-08T14:53:27.000Z</published>
+    <updated>2020-12-08T15:05:43.749Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="可能的原因"><a href="# 可能的原因" class="headerlink" title="可能的原因"></a>可能的原因</h1><ul><li>MySQL 服务宕机</li><li>MySQL 连接被主动 kill 掉</li><li>MySQL 连接超时</li><li>SQL 超长，超出 max_allowed_packet 限制</li></ul><h1 id="具体情况分析和处理"><a href="# 具体情况分析和处理" class="headerlink" title="具体情况分析和处理"></a>具体情况分析和处理 </h1><h2 id="MySQL- 服务宕机"><a href="#MySQL- 服务宕机" class="headerlink" title="MySQL 服务宕机"></a>MySQL 服务宕机</h2><p> 可能是异常情况，访问过程中数据库宕机或重启了，期间的数据库访问请求会出现错误。<br>此种情况可以查看对应时候的 MySQL 相关日志，或者查询 MySQL 运行时间。可通过运行时间和日志，判断该时间是否有服务中断。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show global status like &#39;uptime&#39;;</span><br><span class="line">+---------------+----------+</span><br><span class="line">| Variable_name | Value    |</span><br><span class="line">+---------------+----------+</span><br><span class="line">| Uptime        | 23948658 |</span><br><span class="line">+---------------+----------+</span><br></pre></td></tr></table></figure></p><h2 id="MySQL- 连接被主动 -kill- 掉"><a href="#MySQL- 连接被主动 -kill- 掉" class="headerlink" title="MySQL 连接被主动 kill 掉"></a>MySQL 连接被主动 kill 掉 </h2><p> 部分系统会配置一些连接数过多等情况下，脚本主动 kill 掉相关数据库请求进程，或者可能 DBA 等处理问题时手动 kill 掉，此种情况下也会出现报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show global status like &#39;com_kill&#39;;</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Com_kill      | 100   |</span><br><span class="line">+---------------+-------+</span><br></pre></td></tr></table></figure></p><h2 id="MySQL- 连接超时"><a href="#MySQL- 连接超时" class="headerlink" title="MySQL 连接超时"></a>MySQL 连接超时 </h2><p>MySQL 的连接开启后，很久没有发起新的查询请求，达到了 server 端的超时时间，被 server 端强制关闭连接。此时若该连接再次发起请求时，则会报错 MySQL server has gone away 。此种情况比较常见，一般一个执行时间很长的脚本，开启连接查询部分数据后，进行计算或者请求第三方，在进行数据写入，写入时超时。<br> 可以通过如下命令查看当前 MySQL 的超时时间，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show global variables like &#39;wait_timeout&#39;;</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| wait_timeout  | 28800 |</span><br><span class="line">+---------------+-------+</span><br></pre></td></tr></table></figure></p><p>可以通过如下命令临时修改超时时间，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global wait_timeout &#x3D; 60 * 60 * 8;</span><br></pre></td></tr></table></figure><br>如要长期生效，则需要修改数据库配置文件，并重启 MySQL 服务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wait_timeout &#x3D; 28800</span><br><span class="line">interactive_timeout &#x3D; 28800</span><br></pre></td></tr></table></figure></p><h2 id="SQL- 超长，超出 -max-allowed-packet- 限制"><a href="#SQL- 超长，超出 -max-allowed-packet- 限制" class="headerlink" title="SQL 超长，超出 max_allowed_packet 限制"></a>SQL 超长，超出 max_allowed_packet 限制</h2><p>MySQL 会限制 server 段接收的数据包的大小，有时候大的插入和更新发送的数据包大小超过 max_allowed_packet 的限制，服务端也会报错，导致写入或者更新失败。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show global variables like &#39;%max_allowed_packet%&#39;;</span><br><span class="line">+--------------------------+------------+</span><br><span class="line">| Variable_name            | Value      |</span><br><span class="line">+--------------------------+------------+</span><br><span class="line">| max_allowed_packet       | 1048576   |</span><br><span class="line">+--------------------------+------------+</span><br></pre></td></tr></table></figure><p>可以通过如下命令临时修改，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global max_allowed_packet &#x3D; 4 * 1024 * 1024;</span><br></pre></td></tr></table></figure></p><p>如要长期生效，则需要修改数据库配置文件，并重启 MySQL 服务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_allowed_packet &#x3D; 4M</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;可能的原因&quot;&gt;&lt;a href=&quot;# 可能的原因&quot; class=&quot;headerlink&quot; title=&quot;可能的原因&quot;&gt;&lt;/a&gt;可能的原因&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;MySQL 服务宕机&lt;/li&gt;
+&lt;li&gt;MySQL 连接被主动 kill 掉&lt;/li&gt;
+&lt;li&gt;MyS
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://maxfang.me/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://maxfang.me/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>重新开启 hexo 博客</title>
