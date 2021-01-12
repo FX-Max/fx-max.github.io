@@ -71,7 +71,7 @@
     <link href="http://immaxfang.com/2019/05/17/weekly-reading-list-20190519/"/>
     <id>http://immaxfang.com/2019/05/17/weekly-reading-list-20190519/</id>
     <published>2019-05-16T16:15:15.000Z</published>
-    <updated>2019-05-16T16:29:56.000Z</updated>
+    <updated>2021-01-12T18:22:26.449Z</updated>
     
     <content type="html"><![CDATA[<h2 id="技术"><a href="# 技术" class="headerlink" title="技术"></a> 技术 </h2><ul><li><a href="http://mysql.taobao.org/monthly/2019/04/01/">MySQL · 引擎特性 · 临时表那些事儿 </a></li></ul><h2 id="生活"><a href="# 生活" class="headerlink" title="生活"></a> 生活 </h2><hr><blockquote><p>Keep reading. Keep running.</p></blockquote>]]></content>
     
@@ -323,9 +323,9 @@
       <category term="工具" scheme="http://immaxfang.com/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="工具" scheme="http://immaxfang.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="mac" scheme="http://immaxfang.com/tags/mac/"/>
+    
+      <category term="工具" scheme="http://immaxfang.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
